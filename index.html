@@ -6,10 +6,11 @@
     <title>LearnIn</title>
     <link href="https://fonts.cdnfonts.com/css/cartoon-free" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script src="logic.js" defer></script>
 </head>
 <body>
     <div class="main">
-    <nav class="NavbarItems">
+    <nav class="navbarItems">
         <h1 class="navbar-logo"><img class="logo" src="./assets/logo.png" alt="logo"></img></h1>
         <ul class="nav-menu">
             <a class="nav-links" href="/">Home</a>
@@ -17,8 +18,18 @@
             <a class="nav-links" href="/about">About</a>    
         </ul>    
     </nav>
-    <div>
-        content
+    <div class="content">
+        <p class="counter">1/4</p>
+        <div class="card" onclick="rotateDiv()">
+            <p class="cardContent front">slowo</p>
+            <div class="cardContent back"><p>druga strona</p></div>
+        </div>
+        <div class="dashboard">
+            <a class="prev" onclick="">&#10094;</a>
+            <button class="answerBtn correct"></button>
+            <button class="answerBtn wrong"></button>
+            <a class="next" onclick="">&#10095;</a>
+        </div>
     </div>
 </div>
 </body>
