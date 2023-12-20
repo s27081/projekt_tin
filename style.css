@@ -204,6 +204,11 @@ body{
     transform: rotateX(180deg);
 }
 
+.whoAmI{
+    color: white;
+    font-size: 150%;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
 
 @media screen and (max-width: 630px) {
 
