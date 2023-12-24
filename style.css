@@ -98,6 +98,10 @@ body{
     margin: 0;
 }
 
+.cardContent.answered {
+    color: red;
+}
+
 .card .back {
     opacity: 0;
 }
@@ -209,6 +213,29 @@ body{
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
+.cardContainer{
+    background-color: white;
+    color: rgb(170, 54, 237);
+    width: 100%;
+    text-align: center;
+    border: 2px solid white;
+    border-radius: 25px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    margin: 3%;
+    cursor: pointer;
+}
+
+.selected{
+    border: 10px solid pink;
+}
+
+.scoreboard{
+    width: 50%;
+    height: 30%;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 200%;
+    color: white;
+}
 @media screen and (max-width: 630px) {
 
     

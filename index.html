@@ -19,16 +19,20 @@
         </ul>    
     </nav>
     <div class="content">
-        <p class="counter">1/4</p>
-        <div class="card" onclick="rotateDiv()">
+        <p class="counter"></p>
+        <div class="card" onclick="rotateDiv('cardRotated')">
             <p class="cardContent front">slowo</p>
-            <div class="cardContent back"><p>druga strona</p></div>
+            <p class="cardContent back">druga strona</p>
         </div>
         <div class="dashboard">
             <a class="prev" onclick="prevOnClick()">&#10094;</a>
-            <button class="answerBtn correct"></button>
-            <button class="answerBtn wrong"></button>
+            <button class="answerBtn correct" onclick="correctAnswer()"></button>
+            <button class="answerBtn wrong" onclick="incorrectAnswer()"></button>
             <a class="next" onclick="nextOnClick()">&#10095;</a>
+        </div>
+        <div class="scoreboard">
+            <p class="correctScore">Correct: </p>
+            <p class="incorrectScore">Incorrect: </p>
         </div>
     </div>
 </div>
