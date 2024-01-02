@@ -98,17 +98,13 @@ body{
     margin: 0;
 }
 
-.cardContent.answered {
-    color: red;
-}
-
 .card .back {
     opacity: 0;
 }
 
 .front, .back {
     width: 100%;
-    height: 100%;
+    height: 50%;
     position: absolute;
     display: flex;
     align-items: center;
@@ -214,13 +210,14 @@ body{
 }
 
 .cardContainer{
-    background-color: white;
-    color: rgb(170, 54, 237);
-    width: 100%;
+    background-color: #5c068c;
+    color: white;
+    width: 80%;
     text-align: center;
     border: 2px solid white;
     border-radius: 25px;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 150%;
     margin: 3%;
     cursor: pointer;
 }
@@ -229,12 +226,45 @@ body{
     border: 10px solid pink;
 }
 
+.selected2{
+    background-color: red;
+}
+
+
 .scoreboard{
     width: 50%;
     height: 30%;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 200%;
     color: white;
+}
+
+.restartButton{
+   width: 20%;
+   height: 25%;
+   background-color: rgb(241, 185, 0);
+   cursor: pointer;
+   border-radius: 25px;
+   border: none;
+   color: white;
+   text-align: center;
+}
+
+.cardsButtons{
+    width: 100%;
+    height: 5%;
+    margin-top: 2%;
+    display:inline-block;
+    text-align:center;
+}
+
+.confButton{
+    width: 10%;
+    height: 80%;
+    border: none;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    border-radius: 25px;
+    cursor: pointer;
 }
 @media screen and (max-width: 630px) {
 

@@ -5,8 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LearnIn</title>
     <link href="https://fonts.cdnfonts.com/css/cartoon-free" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="style.css">
     <script src="logic.js" defer></script>
+    
 </head>
 <body>
     <div class="main">
@@ -20,15 +23,13 @@
     </nav>
     <div class="content">
         <p class="counter"></p>
-        <div class="card" onclick="rotateDiv('cardRotated')">
-            <p class="cardContent front">slowo</p>
-            <p class="cardContent back">druga strona</p>
+        <div class="card" onclick="rotateDiv('cardRotated',event)">
+            <p class="cardContent front"></p>
+            <p class="cardContent back"></p>
         </div>
-        <div class="dashboard">
-            <a class="prev" onclick="prevOnClick()">&#10094;</a>
-            <button class="answerBtn correct" onclick="correctAnswer()"></button>
-            <button class="answerBtn wrong" onclick="incorrectAnswer()"></button>
-            <a class="next" onclick="nextOnClick()">&#10095;</a>
+        <div class="dashboard">          
+            <button class="answerBtn correct" onclick="correctAnswer(event)"></button>
+            <button class="answerBtn wrong" onclick="incorrectAnswer(event)"></button>      
         </div>
         <div class="scoreboard">
             <p class="correctScore">Correct: </p>

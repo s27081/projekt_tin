@@ -1,8 +1,21 @@
 let count = 1;
+let goodCounter = 0;
+let badCounter = 0;
 
 const storedData = localStorage.getItem("selectedList");
+console.log(storedData);
+document.addEventListener("DOMContentLoaded", function () {
+    
+    fullCardSetCount = JSON.parse(storedData).length;
 
-let fullCardSetCount = JSON.parse(storedData).length;
+    updateCounter();
+    updateCard(storedData);
+});
+
+function updateCounter(){
+    let counter = document.querySelector(".counter");
+    counter.innerHTML = count + "/" + fullCardSetCount;
+}
 
 function nextOnClick(){
     if(count > fullCardSetCount-1){
@@ -11,26 +24,19 @@ function nextOnClick(){
     count++;
     }
 
-    let counter = document.querySelector(".counter");
-    counter.innerHTML = count + "/" + fullCardSetCount;
+    updateCounter()
     updateCard(storedData)
 }
 
-function prevOnClick(){
-    if(count<=1){
-        count=1;
-    }else{
-        count--;
-    }
-    let counter = document.querySelector(".counter");
-    counter.innerHTML = count +"/" + fullCardSetCount;
-    updateCard(storedData)
-};
-  
-
 function rotateDiv(classType) {
     const div = document.querySelector('.card');
+
+    if (!div.contains(event.target)) {
+        return;
+    }
     div.classList.toggle(classType);
+
+    event.stopPropagation();
 
 }
 
@@ -51,9 +57,6 @@ function updateCard(storedData){
     
 }
 
-let goodCounter = 0;
-let badCounter = 0;
-
 function correctAnswer(){
     if(checkAnswerSum(goodCounter,badCounter)){
         console.log("Za duzo punktow");
@@ -64,6 +67,7 @@ function correctAnswer(){
     correctAnswerElement.innerText = "Correct: " + goodCounter;
 
     nextOnClick()
+    rotateDiv('cardRotated', event);
 }
 }
 
@@ -76,12 +80,36 @@ function incorrectAnswer(){
 
     badAnswerElement.innerText = "Incorrect: " + badCounter;
     nextOnClick()
+    rotateDiv('cardRotated', event);
     }
 }
 
 function checkAnswerSum(goodCounter,badCounter){
+    console.log(count);
     if(goodCounter + badCounter == fullCardSetCount){
+        if(!document.querySelector(".restartButton")){
+            let scoreboardDisplay = document.querySelector(".scoreboard");
+            let restartButton = document.createElement("button");
+            restartButton.setAttribute("class","restartButton");
+            restartButton.innerHTML='<i class="material-icons w3-spin">refresh</i>'
+            restartButton.addEventListener("click", function(){
+                count=1;
+                goodCounter=0;
+                console.log(goodCounter);
+                badCounter=0;
+
+                let correctAnswerElement = document.querySelector(".correctScore");
+                correctAnswerElement.innerText = "Correct: " + goodCounter;
+                
+                let badAnswerElement = document.querySelector(".incorrectScore");
+                badAnswerElement.innerText = "Incorrect: " + badCounter;
+
+                updateCounter();
+                updateCard(storedData)
+            })
+            scoreboardDisplay.appendChild(restartButton);
+        }
         return true;
     }
-    return false;
+    return false
 }
