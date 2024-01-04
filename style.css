@@ -134,29 +134,6 @@ body{
     height: 20%;
 }
 
-.next {
-    border-radius: 3px 0 0 3px;
-  }
-  
-.prev,
-.next {
-    cursor: pointer;
-    color: white;
-    font-weight: bold;
-    font-size: 350%;
-    transition: 0.6s ease;
-    border-radius: 0 6px 6px 0;
-    transition: transform 0.7s ease-in-out;
-}
-
-.prev:hover{
-    transform: translateX(-10%);
-}
-
-.next:hover{
-    transform: translateX(10%);
-}
-
 .answerBtn{
     width: 15em;
     height: 60%;
