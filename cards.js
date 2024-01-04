@@ -23,6 +23,7 @@ function saveValuesToFile(selectedList) {
 }
 
 function clickSelectionHandler(e){
+  console.log(e);
   const target = e.target.closest(".cardContainerContent");      
   const selectedElements = document.querySelectorAll(".cardContainerContent.selected2");
       

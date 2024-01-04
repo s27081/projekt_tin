@@ -159,7 +159,7 @@ body{
 
 .answerBtn{
     width: 15em;
-    height: 50%;
+    height: 60%;
     border-radius: 20%;
     margin: 5%;
     border: none;
@@ -218,16 +218,19 @@ body{
     border-radius: 25px;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 150%;
-    margin: 3%;
+    margin: 2%;
     cursor: pointer;
+    transition: 0.3s ease-in-out;
 }
 
 .selected{
-    border: 10px solid pink;
+    transition: 0.3s ease-in-out;
+    border: 10px solid white;
 }
 
 .selected2{
-    background-color: red;
+    background-color: white;
+    color: #5c068c;
 }
 
 
@@ -247,7 +250,6 @@ body{
    border-radius: 25px;
    border: none;
    color: white;
-   text-align: center;
 }
 
 .cardsButtons{
