@@ -29,7 +29,7 @@ function nextOnClick(){
     }
 
     updateCounter()
-    updateCard(storedData,count)
+    updateCard(storedData)
 }
 
 //animacja odwracania karty
@@ -46,7 +46,7 @@ function rotateDiv(classType) {
 }
 
 //aktualizacja zawartości karty
-function updateCard(storedData,count){
+function updateCard(storedData){
 
     if (storedData) {
         const selectedList = JSON.parse(storedData);
@@ -64,8 +64,10 @@ function updateCard(storedData,count){
 
 //aktualizacja przy dobrej odpowiedzi
 function correctAnswer(){
+    
     if(!checkAnswerSum(goodCounter,badCounter)){
         goodCounter++;
+
         const correctAnswerElement = document.querySelector(".correctScore");
 
         correctAnswerElement.innerText = "Correct: " + goodCounter;
@@ -77,8 +79,10 @@ function correctAnswer(){
 }
 //aktualizacja przy złej odpowiedzi
 function incorrectAnswer(){
+    
     if(!checkAnswerSum(goodCounter,badCounter)){
     badCounter++;
+
     const badAnswerElement = document.querySelector(".incorrectScore");
 
     badAnswerElement.innerText = "Incorrect: " + badCounter;
@@ -104,24 +108,26 @@ function resetFlashCards(){
 
 //sprawdzenie czy wartość nie przekracza granic
 function checkAnswerSum(goodCounter,badCounter){
-    if(goodCounter + badCounter == fullCardSetCount){
+    if(goodCounter + badCounter === fullCardSetCount-1){
+        let restartButton = document.querySelector(".restartButton");
         //utworzenie przycisku do restartu
-        if(!document.querySelector(".restartButton")){
+        if(!restartButton){
             let scoreboardDisplay = document.querySelector(".scoreboard");
-            let restartButton = document.createElement("button");
+            restartButton = document.createElement("button");
             restartButton.setAttribute("class","restartButton");
             restartButton.innerHTML='<i class="material-icons w3-spin">refresh</i>'
             restartButton.addEventListener("click", function(){              
                 resetFlashCards();
                 updateCounter();
-                updateCard(storedData,count);
+                updateCard(storedData);
             })
             scoreboardDisplay.appendChild(restartButton);
         }
         //jeśli przycisk istnieje jest on pokazywany
-        let restartButton = document.querySelector(".restartButton")
         restartButton.style.display = "block";
         console.log("Points limit");
+    }
+    if(goodCounter + badCounter === fullCardSetCount){      
         return true;
     }
     return false

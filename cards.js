@@ -131,9 +131,9 @@ function deleteWord(){
     //usuwanie widoczengo kontenera oraz miejsca na tablic
     selectedContainer.remove();
     lists[selectedParentListIndex].splice(selectedListIndex,1);
-
     saveValuesToFile(lists, "local");
-    saveValuesToFile(lists[selectedListIndex],"session")
+    saveValuesToFile(lists[selectedParentListIndex],"session")
+  
   }else{
     alert("No element selected");
   }
@@ -159,10 +159,10 @@ function editWord() {
             lists[selectedParentListIndex][selectedListIndex] = [editedWordArray[0], editedWordArray[1]];
                       
             saveValuesToFile(lists, "local");
-            saveValuesToFile(lists[selectedListIndex],"session")
+            saveValuesToFile(lists[selectedParentListIndex],"session")
             selectedContainer.innerText = editedWord;
           } else {
-              alert("Syntax error - words should be seperated by ;");
+              alert("Syntax error");
           }
       }
   } else {
