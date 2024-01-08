@@ -7,15 +7,25 @@ const testList = [["example","przykład"],
                   ["comics","komiks"],
                   ["newspaper","gazeta"],
                   ["ad","reklama"],
-                  ["power supply","zasilacz"],
-                  ["memory","pamięć"],
+                  ["coursebook","podręcznik"],
+                  ["notebook","zeszyt"],
+                  ["sheet","kartka"]          
+];
+
+
+const testList2 = [["CPU","procesor"],
+                  ["GPU","karta graficzna"],
                   ["motherboard","płyta główna"],
-]
-
-
-const testList2 = [["dog","pies"],
-                  ["cow","krowa"],
-                ["giraffe","zyrafa"]];
+                  ["PSU","zasilacz"],
+                  ["RAM memory","pamięć RAM"],
+                  ["hard drive","dysk"],
+                  ["case","obudowa"],
+                  ["monitor","monitor"],
+                  ["keyboard","klawiatura"],
+                  ["mouse","myszka"],
+                  ["mouse pad","podkładka"],
+                  ["speakers","głośniki"]
+];
 
 
 //sprawdzanie czy localStorage istnieje i na podstawie tego ustawianie wartości w kartach
@@ -48,7 +58,7 @@ function clickSelectionHandler(e){
   }
 }
 
-let pageDisplay = document.querySelector(".content");
+let pageDisplay = document.querySelector(".contentForCardSet");
 
 
 //na podstawie danych w liście powstają kontenery ze słowami
@@ -79,11 +89,11 @@ for (let i=0; i<lists.length; i++){
     subLi = document.createElement('div');
     subLi.setAttribute("class","cardContainerContent")
     subLi.addEventListener("click", clickSelectionHandler)
-      
     subLi.innerText = subValue[0] + " " + subValue[1];
     newContaner.appendChild(subLi);
   }
   pageDisplay.append(newContaner);
+  
 }
 
 //dodawanie słowa do konkretengo kontenera
@@ -115,7 +125,6 @@ function addWord(){
   } else {
     alert("No element selected");
   }
-
 }
 
 //usuwanie konktetnego słowa w konkretnym kontenerze
@@ -128,7 +137,7 @@ function deleteWord(){
     const selectedParentListIndex = Array.from(selectedSet.parentNode.children).indexOf(selectedSet);
     const selectedListIndex = Array.from(selectedContainer.parentNode.children).indexOf(selectedContainer);
     
-    //usuwanie widoczengo kontenera oraz miejsca na tablic
+    //usuwanie widoczengo słowa oraz miejsca na tablicy
     selectedContainer.remove();
     lists[selectedParentListIndex].splice(selectedListIndex,1);
     saveValuesToFile(lists, "local");
@@ -167,5 +176,39 @@ function editWord() {
       }
   } else {
       alert("No element selected");
+  }
+}
+
+//dodawanie nowego kontenera słów
+function addContainer(){
+  const contentSet = document.querySelector(".contentForCardSet");
+
+  const selectedParentListIndex = Array.from(contentSet.parentNode.children).indexOf(contentSet);
+
+  let newContentSet = document.createElement('div');
+  newContentSet.setAttribute("class","cardContainer")
+  contentSet.appendChild(newContentSet);
+
+  lists.push([])
+                   
+  saveValuesToFile(lists, "local");
+  saveValuesToFile(lists[selectedParentListIndex],"session")
+
+}
+
+//usuwanie wybranego kontenera słów
+function deleteContainer(){
+  const selectedSet = document.querySelector(".cardContainer.selected");
+  if (selectedSet) {
+    const selectedParentListIndex = Array.from(selectedSet.parentNode.children).indexOf(selectedSet);
+    
+    //usuwanie widoczengo kontenera oraz miejsca na tablic
+    selectedSet.remove();
+    lists.splice(selectedParentListIndex,1);
+    saveValuesToFile(lists, "local");
+    saveValuesToFile(lists[selectedParentListIndex],"session")
+  
+  }else{
+    alert("No container selected");
   }
 }
